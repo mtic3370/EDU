@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>zipcode.html</title>
+    <script type="text/javascript">
+    function setZipcode(zip, addr){
+        opener.document.getElmentById("zipcode").value = zip;
+        opener.document.getElmentById("addr1").value = addr;
+        opener.document.getElmentById("addr2").focus();
+        self.close();
+    }
+    function zipClose(){
+        alert("창을 닫습니다.");
+        self.close();
+    }
+    </script>
+</head>
+<body>
+    <h2>우편번호 검색하기</h2>
+    <table border="1" width="100%">
+        <colgroup>
+        <col width="20%"/>
+        <col width="*"/>
+        </colgroup>
+        <tr>
+            <th>우편번호</th>
+            <th>주소</th>
+        </tr>
+        <tr>
+            <td>11111</td>
+            <td><a href="javascript:setZipcode('11111','서울시 종로구')">
+                서울시 종로구
+            </a>
+        </td>
+        </tr>
+        가운데 주소를 3개정도 랜덤하게 추가해주세요
+            <tr>
+                <td>55555</td>
+                <td><a href="javascript:setZipcode('55555','서울시 성북구')">
+                    서울시 성북구
+                </a></td>
+            </tr>
+    </table>
+    <p style="text-align: :center;">
+    <button onclick="zipClose();">우편번호 검색창닫기</button></p>
+</body>
+</html>

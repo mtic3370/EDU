@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>J13Window03Open.html</title>
+<script>
+//창의 이름을 지정하기 위해 전역변수로 선언함.
+
+
+/*
+팝업창 : 광고나 공지사항을 게시할때 주로 사용하는 함수
+
+window.open("창의경로 및 파일명","창의이름","창의속성:모양,위치");
+-open() 함수는 윈도우 객체를 반환한다. 
+-팝업창을 여러개 띄울때 창의이름이 같으면 하나의 창에 계속 띄워지게된다.
+
+#팝업창의 모양을 설정하기 위한 속성
+-width : 팝업창의 가로폭
+-height : 팝업창의 세로폭
+-top : 팝업창을 띄울때 Y좌표(모니터를 기준으로 상단에서 띄워짐)
+-left : 팝업창을 띄울때 X좌표(모니터를 기준으로 좌측에서 띄워짐)
+-location : 주소표시줄 on/off
+-toolbar : 도구모음창 on/off
+-menubar : 메뉴바 on/off
+-scrollbars : 스크롤바 on/off
+-resizable : 팝업창의 크기조절 가능여부 on/off
+*/
+function findZipcode(){
+    //스크롤바만 보이는 상태
+	window.open("./pages/zipcode.html",
+        "Zip",
+        "width=400, height=400, left=500, top=100, location=no, toolbar=no, menubar=no, scrollbars=yes, resizable=no");
+}
+
+//open()함수가 반환하는 윈도우 객체를 저장하기 위한 전역변수
+var winObj1;
+/*
+창의제어
+-부모창에서 자식 팝업창을 제어할때는 팝업창의 참조변수를 이용한다.
+즉, open함수가 반환하는 윈도우 객체를 이용해 제어할수 있다. 
+Ex) 부모창에서 팝업창을 연다
+    var abc = window.open();
+    부모창에서 팝업창을 닫는다.
+    abc.close();
+*/
+function popFirst(){
+	winObj1 = window.open("./pages/popup01.html",
+			     "pop1", "width=300,height=300,left=0,top=0");
+}
+function popClose(){
+	alert("팝업창1을 닫습니다.");
+	winObj1.close();
+}
+
+    
+function openChild1(){
+	window.open("./pages/openChild1st.html","child1",
+			"width=300,height=300,left=0,top=0");
+}
+    
+function screenCenterPop(){
+	
+    //모니터의 해상도를 구해온다. 
+	var s_width = window.screen.width;
+	var s_height = window.screen.height;
+	
+	alert("모니터해상도>가로:"+ s_width +", 세로:"+
+			s_height);
+	
+	var leftVar = s_width/2 - 300/2;
+	var topVar = s_height/2 - 300/2;
+	window.open("./pages/popup01.html", "popup", 
+		"width=300,height=300,left="+leftVar+",top="+
+			topVar);
+}
+</script>
+</head>
+<body>
+	<h2>팝업창 제어하기</h2>
+	<h3>여기는 부모창임</h3>	
+	<fieldset>
+		<legend>우편번호검색하기</legend>
+		<table>
+			<tr>
+				<td>우편번호</td>
+				<td>
+					<input type="text" id="zipcode" size="5" />
+					<button onclick="findZipcode();">
+					우편번호찾기</button>
+				</td>
+			</tr>
+			<tr>
+				<td>기본주소</td>
+				<td>
+					<input type="text" id="addr1" size="30" />
+				</td>
+			</tr>
+			<tr>
+				<td>상세주소</td>
+				<td>
+					<input type="text" id="addr2" size="40" />
+				</td>
+			</tr>
+		</table>
+	</fieldset>
+	
+	
+	<h2>부모창에서 팝업창 제어하기</h2>		
+	<p style="text-align:center;">
+		<button onclick="popFirst();">첫번째 팝업창 열기</button>
+		<button onclick="popClose();">첫번째 팝업창 닫기</button>
+	</p>
+	
+	
+	
+	<h2>화면의 해상도 얻어와서 스크린중간에 팝업띄우기</h2>
+	<p style="text-align:center;">
+		<button onclick="screenCenterPop();">
+			화면중간에팝업띄우기
+		</button>
+	</p>	
+	
+	
+	
+	<h2>팝업의 팝업창에서 부모창 제어하기</h2>
+	<p style="text-align:center;">
+		<input type="button" id="btnFirst" onclick="openChild1();" 
+		    value="첫번째팝업창열기">
+	</p>
+	
+	
+	
+	<h2>창의 속성을 이용한 팝업창 열기</h2>
+	<fieldset>
+		<legend>속성제어하기</legend>
+		가로폭 : <input type="text" id="width" size="4"/>
+		<br/>
+		세로폭 : <input type="text" id="height" size="4" />
+		<br/>
+		Top : <input type="text" id="top" size="4" />
+		<br/>
+		Left : <input type="text" id="left" size="4" />
+		<br/>
+		<input type="checkbox" id="location" value="1" />		
+		주소표시줄
+		&nbsp;
+		<input type="checkbox" id="toolbar" value="1" />
+		도구모음창
+		&nbsp;
+		<input type="checkbox" id="menubar" value="1" />
+		메뉴바
+		&nbsp;
+		<input type="checkbox" id="scrollbars" value="1" />
+		스크롤바
+		&nbsp;
+		<input type="checkbox" id="resizable" value="1" />
+		사이즈조절
+		&nbsp;
+		<button onclick="controlAttr();">
+			팝업창띄우기
+		</button>
+	</fieldset>
+	
+</body>
+</html>
