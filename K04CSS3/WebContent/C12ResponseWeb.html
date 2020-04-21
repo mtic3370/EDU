@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>C14ResponseWeb.html</title>
+<style type="text/css">
+/*전체 선택자를 통해 문서의 기본스타일 지정*/
+	*{margin:0; padding:0; font-family:verdana;}
+    /*block엘리먼트 자체에 대한 가운데 정렬을 위해 margin이 사용된다.*/
+    #AllWrap{
+		margin:0 auto; text-align:center;
+	}
+	#PartWrap{
+		width:100%; text-align:left;
+		border:1px solid blue;
+	}
+	#header{
+		border:1px solid blue; text-align:center;
+		height:100%; line-height:100px;
+	}
+	#nav ul{
+		list-style:none;
+        /* <li>태그의 기본블릿 제거.
+            overflow의 속성값
+            visible:하단으로 글씨가 떨어짐.
+            hidden:숨겨짐
+            scroll:아래로 글씨거ㅏ 떨어지고 메뉴바에 스크룰이 생겨서
+             아래로 내릴수 있게 해줌.
+            auto:자동
+            */
+            
+		overflow:auto;
+	}
+	#nav ul li{
+		font-size:1.5em; font-weight:bold; height:50px;
+		width:20%; float:left; border:1px solid blue;
+		text-align:center; line-height:50px;
+		/* 전체넓이에 패딩과 보더를 포함하여 지정함 */
+		box-sizing:border-box;
+	}
+	#ContentWrap #content > h2{
+		border-bottom:1px #808080 solid;
+		font-size:2em;
+	}
+	#content{
+		padding:20px;
+	}
+	#footer{
+		font-size:2em; font-weight:bold; height:100px;
+		line-height:100px; text-align:center;
+		border:1px solid blue;
+	}
+	
+	/* 640 이하의 디바이스에서 보임설정 */
+	@media screen and (max-width:640px){
+		#AllWrap{ width:100%; }
+		#content p{
+			font-size:2em; color:black;
+		}
+	}
+	/* 1000 이상의 디바이스에서 보임설정 */
+	@media screen and (min-width:1000px){
+		#AllWrap{ width:80%; }
+		#content p{
+			font-size:1em; color:green;
+		}
+	}
+	/* 641~999 사이의 디바이스에서 보임설정 */
+	@media screen and (min-width:641px) and (max-width:999px){
+		#AllWrap{ width:100%; }
+		#content p{
+			font-size:1.5em; color:red;
+			background-color:black;
+		}
+	}	
+</style>
+</head>
+<body>
+<div id="AllWrap">
+	<div id="PartWrap">
+		<div id="header">
+			<h1>HEADER</h1>
+		</div>
+		<div id="nav">
+			<ul>
+				<li>메뉴1입니다</li>
+				<li>메뉴2</li>
+				<li>메뉴3</li>
+				<li>메뉴4</li>
+				<li>메뉴5</li>
+			</ul>
+		</div>
+	</div>
+	<div id="ContentWrap">
+		<div id="content">
+			<h2>문 대통령, 13일부터 3박4일 중국 국빈방문…시진핑과 정상회담(종합)</h2>
+			<p>
+국빈만찬 참석…수교 25주년 맞아 미래발전 방향·'북핵 평화적 해결' 협의 
+<br/><br/>
+15일부터 이틀간 중국 일대일로·서부 개발 거점 충칭도 방문
+<br/><br/>
+(서울=연합뉴스) 노효동 박경준 기자 = 문재인 대통령은 오는 13일부터 3박4일간 일정으로 중국을 국빈 방문한다고 청와대가 6일 발표했다. 
+<br/><br/>
+청와대 박수현 대변인은 이날 언론 브리핑을 통해 "문 대통령이 시진핑 중국 국가주석의 초청으로 13일부터 16일까지 중국을 국빈 방문할 예정"이라고 밝혔다.
+<br/><br/>
+손 꼭 잡은 한중 정상(다낭<베트남>=연합뉴스) 김주형 기자 = APEC 정상회의 참석 중인 문재인 대통령과 시진핑 중국 국가주석이 11일 오후(현지시간) 베트남 다낭 크라운플라자 호텔에서 열린 정상회담에서 반갑게 미소지으며 악수하고 있다. 2017.11.11
+<br/><br/>
+<br/><br/>
+문 대통령은 방중 기간 수도 베이징에서 시진핑(習近平) 중국 국가주석과 정상회담을 하고 국빈 만찬에 참석한다.
+<br/><br/>
+문 대통령은 리커창(李克强) 중국 총리를 비롯한 중국 지도자들과도 회동할 계획이다.
+<br/><br/>
+문 대통령은 중국 지도자와의 만남을 통해 수교 25주년을 맞은 양국 관계 발전 현황을 평가하고 미래 발전 방향을 협의할 예정이라고 박 대변인이 전했다. 
+<br/><br/>
+또 북핵 문제를 평화적으로 해결하고 한반도 평화를 정착시키기 위한 협조 방안과 역내 및 국내문제 등 다양한 상호관심사도 협의할 예정이다. 
+<br/><br/>
+문 대통령은 베이징 방문에 이어 15일부터 이틀간 중국 일대일로 및 서부 개발 거점이자 독립 유적지가 있는 충칭도 방문할 계획이다.
+<br/><br/>
+박 대변인은 "문 대통령의 중국 방문은 취임 후 첫번째로 정상 간 신뢰와 우의를 돈독히 하고 이를 바탕으로 양국 간 교류가 정상적인 방향으로 조속히 전환하는 전기가 되기를 바란다"고 강조했다. 
+<br/><br/>
+rhd@yna.co.kr
+			</p>
+		</div>
+	</div>
+	<div id="footer">
+		<h1>FOOTER</h1>
+	</div>
+</div>
+</body>
+</html>

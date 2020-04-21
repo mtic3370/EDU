@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>C13Transform02.html</title>
+<style>
+	.rect1, .rect2{
+		width:100px; height:100px;				
+		/*
+		변형을 줄 CSS속성 3가지를 지정한다. 여러개의 속성을 지정할때는
+		콤마로 구분하며 각각의 실행시간을 지정할수 있다.
+		아래는 배경색은 5초, 가로길이는 1초, 높이는 7초동안 변형이
+		일어난다. 
+		*/
+		transition-property:background-color, width, height;
+		transition-duration:5s, 1s, 7s; 
+	}
+	.rect1{background-color:red;}
+	.rect2{background-color:green;}
+	.rect1:hover{
+		background-color:#076738;
+		width:300px; height:200px;
+	}
+	.rect2:hover{
+		background-color:#B40A0A;
+		width:200px; height:300px;
+	}
+
+</style>
+</head>
+<body>
+	<h2>Transform(변형2)</h2>
+	<div id="content">
+		<div class="rect1"></div>
+		<div class="rect2"></div>
+	</div>
+	<div style="width:100px; height:100px; background-color:blue;">
+		BOX
+	</div>
+</body>
+</html>
+
