@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>C01Selector01.html</title>
+    <style type="text/css">
+    /* 
+    Selector(선택자)
+
+    1.전체선택자 : 글꼴이나 여백을 문서전체에 지정할때 사용한다. 
+        *는 해당 HTML문서 전체를 가리키는 선택자이다.
+    */
+	*{
+        /*해당문서의 마진을 0으로 지정한다.*/
+		margin:0px; 
+        /*문서에서 사용할 기본폰트를 지정한다. */
+		font-family:verdana; 
+	}
+    /*
+    2.태그선택자 : 태그와 동일한 이름을 사용하여 
+        문서내의 모든 태그를 한꺼번에 선택하여 지정한다.
+    */
+	div{
+		border:2px solid red;
+	}
+	span{
+		color:blue; font-size:20px;
+        border: 1px dotted gray;
+	}
+    /*
+    3.클래스선택자 : 클래스 속성으로 선택가능한 선택자로
+        문서내에서 중복사용이 가능하다. 즉 여러개의 
+        엘리먼트(요소)에 중복적으로 적용할수 있는 스타일이다.
+    */
+	.positive{
+		font-weight:bold;
+		background-color:yellow;
+	}
+	.nagative{
+		color:silver; font-size:10px;
+	}
+    /*
+    4.하위선택자 : 스페이스로 구분하여 항목을 선택한다. 
+        특정 태그 하위의 모든 요소가 선택된다. table태그라면
+        tr, td태그 모두가 선택된다고 보면된다. 
+    */
+	.myDiv span{
+		color:red; font-size:24px;
+	}
+    /*
+    5.자식선택자 : >(꺽쇄)구분해서 항목을 선택한다. 하위에 있는
+        태그중 1단계 하위태그만을 선택한다. table태그라면
+        tr태그만 선택된다고 보면된다. 
+    */
+    .myDiv > span{
+		color:blue; font-size:16px;
+	}
+    </style>
+</head>
+<body>
+	<h2>선택자-수정하기</h2>
+	디폴트 내용입니다.
+	<div>
+		<span>div태그는 Block Element입니다. 마진을 
+		확인해봅시다.</span>
+		<br />
+		저의 <span class="positive">장점</span>은 
+			<span class="positive">긍정적인성격</span>입니다.
+		<br />
+		저의 <span class="nagative">단점</span>은 
+			<span class="nagative">지저분한스타일</span> 입니다. 	
+	</div>
+	
+	
+	<h2>하위선택자 및 자식선택자</h2>
+	<div class="myDiv">
+		<span>div 태그안의 span태그[myDiv의 하위태그 & 자식태그]</span>
+		<fieldset>
+			<span>fieldset 태그안의 span태그[myDiv의 하위태그]</span>
+		</fieldset>
+	</div>
+</body>
+</html>
