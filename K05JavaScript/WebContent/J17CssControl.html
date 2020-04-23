@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>J17CssControl.html</title>
+    <script>
+        /*
+        Javascript로 CSS 속성 제어하기
+        방법 : DOM객체.style.CSS속성 = "속성값";
+            단, CSS속성을 표현할때는 -(하이픈)은 빠지고 두번째 첫글자를 대문자로
+            변경한다. 하이픈이 없는 속성은 그대로 사용한다. 
+        Ex)
+            font-size:10px; => fontSize='10px';
+            background-image:url() => backgroundImage="url('이미지경로')";
+        */
+
+        var pTag, pSize;
+
+        window.onload = function(){
+            pTag = document.getElementById("article");
+            pSize = parseInt(pTag.style.fontSize);
+        }
+
+        function fnArticle(flag){
+
+            switch(flag){
+                case "+":
+                    pSize += 10;
+                    pTag.style.fontSize = pSize+"px";
+                    break;
+                case "-":
+                    pSize -= 10;
+                    pTag.style.fontSize = pSize+"px";
+                    break;
+                case "R":
+                    pTag.style.color = "red";
+                    break;
+                case "G":
+                    pTag.style.color = "green";
+                    break;
+                case "B":
+                    pTag.style.color = "blue";
+                    break;
+                case "Bo":
+                    pTag.style.fontWeight = "bold";
+                    break;
+                case "No":
+                    pTag.style.fontWeight = "normal";
+                    break;
+                case "Ce":
+                pTag.style.textAlign = "center";
+                    break;
+                case "Le":
+                    pTag.style.textAlign = "left";
+                    break;
+                default:
+                    pTag.style.color = "black";
+                    break;
+            }
+        }
+        	/*
+	문제] 글꼴바꾸기 버튼을 계속 누를때마다 아래 5가지
+	폰트가 토글되어 적용될수 있도록 함수를 정의하시오.
+	글꼴 : Verdana, Stencil, 휴먼옛체, 궁서, Impact
+	*/
+    var fontToggle=0;//폰트토글을 위한 전역변수
+	function setFont(){
+		//문제에서 주어진 폰트를 배열로 선언
+		var fontArray 
+			= ["Verdana", "Stencil", "휴먼옛체", "궁서", "Impact"];
+        
+		//정수를 5로 나누면 나머지는 0~4까지 생성
+		var fontIndex = fontToggle % 5;
+		//위에서 구한 수를 인덱스로 폰트 설정
+		pTag.style.fontFamily = fontArray[fontIndex];		
+		
+		//함수를 호출할때마다 1증가
+		fontToggle++;
+    }
+    </script>
+</head>
+<body>
+    <h2>자바스크립트로 신문기사 내용 제어하기</h2>
+	<input type="button" value="글꼴바꾸기" onclick="setFont();"/>
+	<fieldset>
+		<legend>신문기사</legend>
+		<button onclick="fnArticle('+');">+</button>
+		<button onclick="fnArticle('-');">-</button>
+		<button onclick="fnArticle('R');">Red</button>
+		<button onclick="fnArticle('G');">Green</button>
+		<button onclick="fnArticle('B');">Blue</button>
+		<button onclick="fnArticle('');">Black</button>
+		<button onclick="fnArticle('Bo');">볼드체</button>
+		<button onclick="fnArticle('No');">보통체</button>
+		<button onclick="fnArticle('Ce');">가운데정렬</button>
+		<button onclick="fnArticle('Le');">좌측정렬</button>
+	</fieldset>
+	<p style="font-size:12px;" id="article">
+		오늘의 뉴스<br/>
+        이 율 김연정 기자 = 홍남기 부총리 겸 기획재정부 장관은 22일 비상경제회의에서 <br>
+        확정된 10조1천억원 규모의 고용안정특별대책과 관련, "이 중 9.3조원의 재원 조성에 대해서는 <br>
+        상당 규모의 3차 추가경정예산(추경)안을 추가로 마련할 계획이므로 이를 통해 소요를 반영하겠다"고 말했다.<br><br>
+
+        홍 부총리는 이날 정부서울청사에서 '제5차 비상경제회의 결과 합동 브리핑'을 열고<br>
+         "전체 10.1조원 대책 중 0.8조원은 우선 예비비, 기금변경 등 가용재원을 활용해 즉시 <br>
+         조치할 계획"이라며 이같이 밝혔다.<br><br>
+
+        홍 부총리는 "이번 대책 규모는 2020년 일자리 예산(25.5조원)의 40% 수준이며 <br>
+        이를 통해 2019년 연간 실업자 115만명의 2.5배에 해당하는 286만명의 근로자를 지원하는 과감한 투자"라고 설명했다.<br><br>	
+    </p>
+    앙농하세용?~~~재밌는 태그시간...^^시작해볼게용.^^
+
+    방금 보신 인터넷창에서 변환할수 있게 한 소스는 여기서 만든 소시입니다.^^
+</body>
+</html>

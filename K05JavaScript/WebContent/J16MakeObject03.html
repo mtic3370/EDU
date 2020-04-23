@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>J16MakeObject03.html</title>
+    <script type="text/javascript">
+var Account = function(owner, code, balance) {
+    this.owner = owner;
+	this.code = code;
+	this.balance = balance;
+	
+	this.inquiry = function(){
+		return this.balance;
+	}
+	this.deposit = function(money){
+		this.balance += money;
+	}
+	this.withdraw = function(money){
+		this.balance -= money;	
+		return money;
+	}
+
+	return this;
+}
+</script>
+</head>
+
+<body>
+	<h2>생성자 표기법으로 사용자객체 만들기</h2>
+<script>
+var account = new Account('홍길동', '123456-78-999', 150000);
+
+console.log(account);
+console.log('이름:', account.owner);
+console.log('입금전잔고:', account.balance);
+account.deposit(3300);
+console.log('입금후잔고:', account.balance);
+account.withdraw(53300);
+console.log('출금후잔고:', account.inquiry());
+</script>  </body>
+</html>
