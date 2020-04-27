@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>updowngame.html</title>
+    <script>
+        function getUpDownGame(){
+            var upDownStr ="";
+            var upDownNum = [0];
+            var index = 0;
+        
+    while(index<1){
+        var randomNum = parseInt(Math.random()*100);
+        for(var i=0 ; i<upDownNum.length ; i++){
+			if(upDownNum[i]==randomNum){
+				flag = true;
+				//중복값이 확인되면 즉시 루프를 탈출한다. 
+                break;
+			}				
+		}
+		if(flag==true){	
+            
+			flag = false;
+			continue;
+		}
+		else{
+			upDownNum[index++] = randomNum;
+		}
+	}	
+        for(var i=0 ; i<upDownNum.length ; i++){
+            upDownStr += upDownNum[i] +"&nbsp;";
+        }
+        document.getElementById("upDownNumber").innerHTML
+            = upDownStr;
+            }
+        
+    </script>
+</head>
+<body>
+  <h2>업다운게임(1~100)번호 생성하기</h2>
+  <button type="button" onclick="getUpDownGame();">Random번호 생성</button>
+  <span id="upDownNumber" style="font-size:2em; color:red;">생성된 번호</span>
+
+  <h2>번호 입력기</h2>
+  숫자를 맞춰보세요?<input type="text" id="width" size="4"/>
+  <input type="button" value="정답" onclick="fnNum();" />    
+  <br />
+  <script>
+  function fnNum(){
+    var id = document.getElementById("user_num").value;
+    flag = false;
+			continue;
+
+    if(id==true){
+        window.location.href="./updowngame/answer.jpeg"
+}
+    else if(id==up){
+        location.href="./updowngame/down.jpg"
+    else if(id==down){
+        location.href="./updowngame/up.jpg"
+        }
+    }
+}
+
+</body>
+
+</html>
