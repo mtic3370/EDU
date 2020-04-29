@@ -18,9 +18,8 @@
 	text-align:left;/* 기본정렬인 left로 다시 설정 */
 }
 .header .logo{
-	float:left;/* 해당 영역을 띄워서 좌측으로 붙힘 */ 
+	float:center;/* 해당 영역을 띄워서 좌측으로 붙힘 */ 
 	width:30%; 
-	text-align:center;
 }
 .header .top_menu{
 	text-align:right;
@@ -59,7 +58,7 @@ a.top_link:visited{/* 이미 사이트를 방문했을때 */
 }
 .body .left_menu{
 	float:left; 
-	width:30%;
+	width:200px;
 	text-align:left;
 }
 .body .left_menu ul{
@@ -86,7 +85,7 @@ a.left_link:visited{/* 이미 사이트를 방문했을때 */
 .body .contents{
 	text-align:left;
 	width:70%;
-	padding:20px;
+	padding:0px;
 	float:left;
 	box-sizing:border-box;/* 박스를 기본값으로 세팅한
 	크기를 유지할지를 결정하는 속성으로
@@ -102,13 +101,13 @@ a.left_link:visited{/* 이미 사이트를 방문했을때 */
 }
 .copyright .copy_logo{
 	float:left;
-	width:30%;
+	width:20%;
 	height:100px;
 	padding-top:10px;
 }
 .copyright .copy_info{
 	float:left;
-	width:70%;
+	width:73%;
 	height:100px;
 	font-size:12px;
 }

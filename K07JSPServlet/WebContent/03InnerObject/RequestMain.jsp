@@ -9,7 +9,7 @@
 <title>RequestMain.jsp</title>
 </head>
 <body>
-	<h2>전솔방식(Post, Get) 테스트</h2>
+	<h2>전송방식(Post, Get) 테스트</h2>
 	<!-- get방식은 3가지 전송방식이 있다.
 	1. <a href-""를사용하는 방법
 	2. JS의 location.href=""를 사용
