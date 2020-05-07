@@ -5,8 +5,9 @@
 		<!-- 로고
 		(CI : Corporate Identity : 기업이미지) 
 		-->
-		<img src="http://www.ikosmo.co.kr/images/common/logo_center_v2.jpg" width="150"
-			alt="한국소프트웨어인재개발원" />
+		<img 
+			src="http://www.ikosmo.co.kr/images/common/logo_center_v2.jpg" 
+			alt="한국소프트웨어인재개발원" width="150" />
 	</div>
 	<div class="top_menu">
 		<!-- 탑메뉴 -->
