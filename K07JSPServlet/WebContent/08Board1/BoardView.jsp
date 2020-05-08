@@ -95,10 +95,7 @@ dao.close();
 	}
 	%>							
 	</div>
-	<div class="col-6 text-right pr-5">					
 		<button type="button" class="btn btn-warning" onclick="location.href='BoardList.jsp';">리스트보기</button>
-	</div>	
-</div>
 <!-- 
 게시물삭제의 경우 로그인 된 상태이므로 해당 게시물의 일련번호만
 서버로 전송하면 된다. 이때 hidden폼을 사용하고, JS의 submit()
@@ -126,7 +123,7 @@ dao.close();
 </body>
 </html>
 
-<!-- 
+<!-- 아이콘모음
 	<i class='fas fa-edit' style='font-size:20px'></i>
 	<i class='fa fa-cogs' style='font-size:20px'></i>
 	<i class='fas fa-sign-in-alt' style='font-size:20px'></i>
