@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!-- EL에서 java클래스의 메소드 호출 절차 및 방법
+1. 클래스아 메소드를 정의한다. 단 메소드의 정의시 반드시 public static으로 선언해야 한다.
+2. TLD파일을 생성.Teg Library Descriptor의 약자로 Web-INF폴더 하위로
+아무것이나 생성하면 콘테이너가 찾아서 사용하게 됨. -->
+<taglib xmlns="http://java.sun.com/xml/ns/j2ee"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-jsptaglibrary_2_0.xsd"
+  version="2.0">
+  
+  <description>My Tag Library</description>
+  <tlib-version>1.1</tlib-version>
+  <!-- 접두어 : 세팅후 EL에서 함수 호출시 사용할 접두어를 설정함.-->
+  <short-name>my</short-name>
+  
+  <!-- 호출할 java클래스의 메소드 등록 -->
+  <function>
+  	<!-- EL에서 사용할 메소드 명 -->
+  	<name>isNumber</name>
+  	<!-- 클래스의 전체경로(패키지를 포함한 풀 경로) -->
+  	<function-class>eltag.MyTagLib</function-class>
+  	<!-- 
+  		메소드의 원형을 기록한다. 리턴타입과 인자의 타입은 패키지를
+  		포함한 풀경로를 사용해야 한다. 단, 기본자료형인 경우에는
+  		자료형만 쓰면 된다. (예 : int, double 등)
+  	 -->
+  	<function-signature>boolean isNumber(java.lang.String)</function-signature>
+  </function>
+  
+	<function>
+		<name>getGender</name>
+		<function-class>eltag.MyTagLib</function-class>
+		<function-signature>java.lang.String getGender(java.lang.String)</function-signature>
+	</function>  
+  	
+  	<function>
+  		<name>memberLogin</name>
+  		<function-class>eltag.MyTagLib</function-class>
+  		<function-signature>
+  			boolean memberLogin(java.lang.String, java.lang.String, 
+  									java.lang.String, java.lang.String)
+  		</function-signature>
+  	</function>
+</taglib>
