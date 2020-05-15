@@ -52,17 +52,6 @@
   	taglib-uri : JSP의 taglib 지시어의 uri속성에 넣어줄값
   	taglib-location : 실제 tld파일의 위치
    -->
-  
- <!-- 
- EL에서 자바클래스의 메소드 호출하기 위한 절차
-1. 자바클래스 파일 작성
-	eltag/MyTagLib.java
-2. TLD(Tag Library Descriptor) 파일 작성
-	: WEB-INF 폴더 하위 아무곳이나 등록하면 됨. JSP컨테이너가 알아서
-	찾아서 사용함. 파일 작성시에는 fn.tld파일 참조
-3. web.xml에 엘리먼트 추가
-	: <jsp-config> 엘리먼트 추가후 tld파일의 경로를 등록
-  -->
   <jsp-config>
   	<taglib>
   		<taglib-uri>myTagLibTld</taglib-uri>
