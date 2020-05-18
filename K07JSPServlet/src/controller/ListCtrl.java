@@ -61,11 +61,3 @@ public class ListCtrl extends HttpServlet {
 		doGet(req, resp);
 	}
 }
-
-
-
-
-
-
-
-
