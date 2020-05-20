@@ -48,8 +48,7 @@ public class ListCtrl extends HttpServlet {
 		//컬렉션에 저장된 데이터를 View로 전달하기위해 Request영역에 속성저장
 		req.setAttribute("lists", lists);
 		req.setAttribute("map", param);
-		req.getRequestDispatcher("/14Dataroom/DataList.jsp")
-			.forward(req, resp);
+		req.getRequestDispatcher("/14Dataroom/DataList.jsp").forward(req, resp);
 	}
 	
 	@Override
@@ -61,3 +60,11 @@ public class ListCtrl extends HttpServlet {
 		doGet(req, resp);
 	}
 }
+
+
+
+
+
+
+
+
