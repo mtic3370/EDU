@@ -11,26 +11,24 @@
 	<div class="row">		
 		<jsp:include page="../common/boardLeft.jsp" />
 		<div class="col-9 pt-3">
-			<h3>게시판 - <small>Write(작성)</small></h3>
+			<h3>자료실 - <small>Write(작성)</small></h3>
 <script>
 	//유기명함수
 	function checkValidate(frm){		
 		if(frm.name.value==""){
-			alert("이름을 입력하세요.");//경고창 띄움
-			frm.name.focus();//입력란으로 포커스 이동
-			return false;//전송되지 않도록 이벤트리스너로 false반환
+			alert("이름을 입력하세요.");
+			frm.name.focus();
+			return false;
 		}
-		function checkValidate(frm){		
-			if(frm.pass.value==""){
-				alert("비밀번호을 입력하세요.");//경고창 띄움
-				frm.pass.focus();//입력란으로 포커스 이동
-				return false;//전송되지 않도록 이벤트리스너로 false반환
-			}
-	function checkValidate(frm){		
+		if(frm.pass.value==""){
+			alert("비밀번호를 입력하세요.");
+			frm.pass.focus();
+			return false;
+		}
 		if(frm.title.value==""){
-			alert("제목을 입력하세요.");//경고창 띄움
-			frm.title.focus();//입력란으로 포커스 이동
-			return false;//전송되지 않도록 이벤트리스너로 false반환
+			alert("제목을 입력하세요.");
+			frm.title.focus();
+			return false;
 		}
 		if(frm.content.value==""){
 			alert("내용을 입력하세요.");//경고창 띄움
@@ -45,11 +43,14 @@
 </script>			
 			<div class="row mt-3 mr-1">
 <table class="table table-bordered table-striped">
-<!-- 
-파일 업로드를 위해서는 반드시 enctype을 선언해야 한다. 그렇지 않으면 파일은 서버로 전송되지 않는다.
- -->
+
+<!--  
+	파일 업로드를 위해서는 반드시 enctype을 선언해야 한다. 그렇지
+	않으면 파일은 서버로 전송되지 않는다. 
+-->
 <form name="writeFrm" method="post" action="../DataRoom/DataWrite"
-	enctype="multipart/form-data"  onsubmit="return checkValidate(this);">
+	enctype="multipart/form-data" 
+	onsubmit="return checkValidate(this);">
 	
 <colgroup>
 	<col width="20%"/>
@@ -60,15 +61,15 @@
 		<th class="text-center align-middle">작성자</th>
 		<td>
 			<input type="text" class="form-control"	style="width:100px;"
-			name="name"/>
+				name="name" />
 		</td>
 	</tr>
 	<tr>
 		<th class="text-center" 
 			style="vertical-align:middle;">패스워드</th>
 		<td>
-			<input type="password" class="form-control"
-				style="width:200px;" name="pass"/>
+			<input type="password" class="form-control" style="width:200px;"
+				name="pass" />
 		</td>
 	</tr>
 	<tr>
@@ -81,7 +82,7 @@
 	</tr>
 	<tr>
 		<th class="text-center"
-			style="vertical-align:middle;"" name="content">내용</th>
+			style="vertical-align:middle;">내용</th>
 		<td>
 			<textarea rows="10" 
 				class="form-control" name="content"></textarea>
@@ -91,7 +92,7 @@
 		<th class="text-center"
 			style="vertical-align:middle;">첨부파일</th>
 		<td>
-			<input type="file" class="form-control" name="attachedfile"/>
+			<input type="file" class="form-control" name="attachedfile" />
 		</td>
 	</tr>
 </tbody>
@@ -99,18 +100,11 @@
 			</div>
 			<div class="row mb-3">
 				<div class="col text-right">
-					<!-- 각종 버튼 부분 -->
-					<!-- <button type="button" class="btn">Basic</button> -->
-					<!-- <button type="button" class="btn btn-primary" 
-						onclick="location.href='BoardWrite.jsp';">글쓰기</button> -->
-					<!-- <button type="button" class="btn btn-secondary">수정하기</button>
-					<button type="button" class="btn btn-success">삭제하기</button>
-					<button type="button" class="btn btn-info">답글쓰기</button>
-					<button type="button" class="btn btn-light">Light</button>
-					<button type="button" class="btn btn-link">Link</button> -->
-					<button type="submit" class="btn btn-danger">전송하기</button>
+					<!-- 각종 버튼 부분 -->					
+<!-- 샘 소스 오류 -->					<button type="submit" class="btn btn-danger">전송하기</button>
 					<button type="reset" class="btn btn-dark">Reset</button>
-					<button type="button" class="btn btn-warning" onclick="location.href='BoardList.jsp';">리스트보기</button>
+					<button type="button" class="btn btn-warning" 
+						onclick="location.href='../DataRoom/DataList';">리스트보기</button>
 				</div>
 				</form>
 			</div>

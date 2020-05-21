@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>  
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> 
 <!DOCTYPE html>
 <html lang="en">
 <jsp:include page="../common/boardHead.jsp" />
@@ -53,52 +53,44 @@
 				</tr>
 				</thead>				
 				<tbody>
-				<!-- 
-			ListCtrl 클래스에서 request영역에 저장한 ResultSet을 JSTL과 EL을
-			통해 화면에 내용을 출력한다. 
-			choose
-			when -> lists컬렉션에 아무값도 없을때..
-			otherwise -> ResultSet 결과가 있을때...
- 			-->	
-			<c:choose>
-				<c:when test="${empty  lists }">
+<!--  
+	ListCtrl 서블릿에서 request영역에 저장한 ResultSet을 JSTL과 EL을
+	통해 화면에 내용을 출력한다. 
+		 choose
+		 	when -> lists 컬렉션에 아무값도 없을때
+		 	otherwise -> ResultSet 결과가 있을때(즉 출력할 레코드가 있을때)
+-->				
+<c:choose>	
+	<c:when test="${empty lists }">
  				<tr>
- 					<td colspan="6">
+ 					<td colspan="6" align="center" height="100">
  						등록된 게시물이 없습니다. 
  					</td>
  				</tr>
- 			</c:when>
- 			<c:otherwise>
-	 			<c:forEach items="${lists }" var="row" varStatus="loop">
-	 		<tr>
-				<td>
-					${map.totalCount - (((map.nowPage-1) * map.pageSize) + loop.index) }   
-				</td>
-				<td>
-					<a href="../DataRoom/DataView?idx=${row.idx }&nowPage=${param.nowPage }">
-						${row.title }
-					</a>					
-				</td>
-				
-				<td class="text-center">${row.name }</td>				
-				<td class="text-center">${row.visitcount }</td>
-				<td class="text-center">${row.postdate }</td>
-				<td align="center">
-					<c:if test="${not empty row.attachedfile }">
-<a href="./Download?filename=${row.attachedfile }&idx=${row.idx }">
-						<img src="../images/disk.png" width="20" alt="" />
-</a>
-					</c:if>
-				</td>
-			</tr>
+	</c:when>
+	<c:otherwise>
+		<c:forEach items="${lists }" var="row" varStatus="loop">				
+				<tr>
+					<td class="text-center"><!-- 가상번호 -->
+						${map.totalCount - (((map.nowPage-1) * map.pageSize) + loop.index)}   
+					</td>
+					<td class="text-left">
+<a href="../DataRoom/DataView?idx=${row.idx }&nowPage=${param.nowPage }&searchColumn=${param.searchColumn }&searchWord=${param.searchWord }">${row.title }</a>
+					</td>
+					<td class="text-center">${row.name }</td>
+					<td class="text-center">${row.postdate }</td>
+					<td class="text-center">${row.visitcount }</td>
+					<td class="text-center">
+						<c:if test="${not empty row.attachedfile }">
+							<a href="./Download?filename=${row.attachedfile }&idx=${row.idx }">
+								<i class="material-icons" style="font-size:20px">attach_file</i>
+							</a>
+						</c:if>
+					</td>
+				</tr>
 		</c:forEach>		
 	</c:otherwise>	
 </c:choose>
-</table>
-<!-- 리스트반복 end -->
-		<%
-/////////////////////////////////////
-		%>
 				</tbody>
 				</table>
 			</div>
@@ -106,8 +98,14 @@
 				<div class="col text-right">
 					<!-- 각종 버튼 부분 -->
 					<!-- <button type="button" class="btn">Basic</button> -->
+					
+					
+					
 					<button type="button" class="btn btn-primary" 
 						onclick="location.href='../DataRoom/DataWrite';">글쓰기</button>
+						
+						
+						
 					<!-- <button type="button" class="btn btn-secondary">수정하기</button>
 					<button type="button" class="btn btn-success">삭제하기</button>
 					<button type="button" class="btn btn-info">답글쓰기</button>
@@ -121,29 +119,29 @@
 			<div class="row mt-3">
 				<div class="col">
 					<!-- 페이지번호 기본이미지 -->
-					<div style="text-align:center;padding:0 0 10px 0;">
-						
-					</div>
+					<%-- <div style="text-align:center;padding:0 0 10px 0;">
+						${map.pagingImg }
+					</div> --%>
 	
 					<!-- 페이지번호 부트스트랩4 적용 -->
 					<ul class='pagination justify-content-center'>
-						
+						${map.pagingImg }
 					</ul>
+					
+					<!-- 페이지 번호 누락(기호, 숫자 1도 안나옴) -->
 				</div>				
 			</div>		
 		</div>
 	</div>
 	<jsp:include page="../common/boardBottom.jsp" />
 </div>
-</body>
-</html>
+<center>
 
-<!-- 
-	<i class='fas fa-edit' style='font-size:20px'></i>
+<!-- <i class='fas fa-edit' style='font-size:20px'></i> -->
 	<i class='fa fa-cogs' style='font-size:20px'></i>
-	<i class='fas fa-sign-in-alt' style='font-size:20px'></i>
-	<i class='fas fa-sign-out-alt' style='font-size:20px'></i>
-	<i class='far fa-edit' style='font-size:20px'></i>
+<!--	<i class='fas fa-sign-in-alt' style='font-size:20px'></i>
+	<i class='fas fa-sign-out-alt' style='font-size:20px'></i> -->
+<!-- 	<i class='far fa-edit' style='font-size:20px'></i>
 	<i class='fas fa-id-card-alt' style='font-size:20px'></i>
 	<i class='fas fa-id-card' style='font-size:20px'></i>
 	<i class='fas fa-id-card' style='font-size:20px'></i>
@@ -153,8 +151,15 @@
 	<i class='fas fa-pen-nib' style='font-size:20px'></i>
 	<i class='fas fa-pen-square' style='font-size:20px'></i>
 	<i class='fas fa-pencil-alt' style='font-size:20px'></i>
-	<i class='fas fa-pencil-ruler' style='font-size:20px'></i>
+	<i class='fas fa-pencil-ruler' style='font-size:20px'></i> -->
 	<i class='fa fa-cog' style='font-size:20px'></i>
 
 	아~~~~힘들다...ㅋ
- -->
+</body>
+
+</html>
+
+<!-- 게시글 번호 뒤섞임 -->
+
+ 
+	

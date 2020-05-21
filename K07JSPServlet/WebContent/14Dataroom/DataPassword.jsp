@@ -11,66 +11,60 @@
 	<div class="row">		
 		<jsp:include page="../common/boardLeft.jsp" />
 		<div class="col-9 pt-3">
-			<h3>게시판 - <small>Password(패스워드검증)</small></h3>
+			<h3>자료실 - <small>Password(패스워드검증)</small></h3>
 <script>
 	//유기명함수
-	
+	function checkValidate(frm){		
 		
-		function checkValidate(frm){		
-			if(frm.pass.value==""){
-				alert("비밀번호을 입력하세요.");//경고창 띄움
-				frm.pass.focus();//입력란으로 포커스 이동
-				return false;//전송되지 않도록 이벤트리스너로 false반환
-			}
-		}
-	 	
+		if(frm.pass.value==""){
+			alert("비밀번호를 입력하세요.");
+			frm.pass.focus();
+			return false;
+		}		
+	}	
+	//무기명함수
+	var checkValidate2 = function(frm){		
+		//실행부는 유기명함수와 동일함
+	}	
 </script>			
 			<div class="row mt-3 mr-1">
 <table class="table table-bordered table-striped">
-<!-- 
-패스워드 검증폼은 첨부파일을 전송하지 않음으로 enctype선언부를 삭제해야 한다.
- -->
-<form name="writeFrm" method="post" action="../DataRoom/DataPassword"
-onsubmit="return checkValidate(this);">
 
-<!-- idx의 경우 영역에 저장하지 않고, EL의 param내장객체를 통해서
-	바로 읽어온다. View(jsp파일)에서 바로 사용하는경우에는 EL식으로
-	즉시 읽어오는것이 편리하다. -->
-<input type="hid den" name="idx" value="${param.idx }" />
-<input type="hid den" name="mode" value="${mode }" />
-<input type="hid den" name="nowPage" value="${param.nowPage }" />
+<!--  
+	패스워드 검증폼은 첨부파일을 전송하지 않으므로 enctype선언부분을
+	삭제해야한다. 
+-->
+<form name="writeFrm" method="post" action="../DataRoom/DataPassword"
+	onsubmit="return checkValidate(this);">
+	
+<!-- 패스워드 검증을 위해 idx, mode는 서버로 전송해야 하므로
+	hidden폼에 값을 저장한다. -->
+<input type="hidden" name="idx" value="${param.idx }"/>
+<input type="hidden" name="mode" value="${mode }" />
+<input type="hidden" name="nowPage" value="" />
 	
 <colgroup>
 	<col width="20%"/>
 	<col width="*"/>
 </colgroup>
-<tbody>
+<tbody>	
 	<tr>
 		<th class="text-center" 
 			style="vertical-align:middle;">패스워드</th>
 		<td>
-			<input type="password" class="form-control"
-				style="width:200px;" name="pass"/>
+			<input type="password" class="form-control" style="width:200px;"
+				name="pass" />
 		</td>
-	</tr>
-
+	</tr>	
 </tbody>
 </table>
 			</div>
 			<div class="row mb-3">
-				<div class="col text-right">
-					<!-- 각종 버튼 부분 -->
-					<!-- <button type="button" class="btn">Basic</button> -->
-					<!-- <button type="button" class="btn btn-primary" 
-						onclick="location.href='BoardWrite.jsp';">글쓰기</button> -->
-					<!-- <button type="button" class="btn btn-secondary">수정하기</button>
-					<button type="button" class="btn btn-success">삭제하기</button>
-					<button type="button" class="btn btn-info">답글쓰기</button>
-					<button type="button" class="btn btn-light">Light</button>
-					<button type="button" class="btn btn-link">Link</button> -->
+				<div class="col text-right">					
 					<button type="submit" class="btn btn-danger">전송하기</button>
 					<button type="reset" class="btn btn-dark">Reset</button>
-					<button type="button" class="btn btn-warning" onclick="location.href='BoardList.jsp';">리스트보기</button>
+					<button type="button" class="btn btn-warning" 
+						onclick="location.href='../DataRoom/DataList';">리스트보기</button>
 				</div>
 				</form>
 			</div>
