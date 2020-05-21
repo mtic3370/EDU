@@ -38,15 +38,16 @@ public class DataroomDAO {
 	}
 	
 	public DataroomDAO(ServletContext ctx) {
-		try {
+		try {	
 			Class.forName(ctx.getInitParameter("JDBCDriver"));
 			String id = "kosmo";
 			String pw = "1234";
 			con = DriverManager.getConnection(
-					ctx.getInitParameter("ConnectionURL"),id,pw);
-			System.out.println("DB연결성공");
+					ctx.getInitParameter("ConnectionURL"), id, pw);
+			System.out.println("DB 연결성공^^*");
 		}
-		catch (Exception e) {
+		catch(Exception e) {
+			System.out.println("DB 연결실패ㅜㅜ ;");
 			e.printStackTrace();
 		}
 	}
@@ -193,7 +194,7 @@ public class DataroomDAO {
 		}
 		catch(Exception e){}
 	}
-	
+		
 	public boolean isCorrectPassword(String pass, String idx) {
 		boolean isCorr = true;
 		try {
@@ -218,36 +219,6 @@ public class DataroomDAO {
 		return isCorr;
 	}
 	
-	
-	public int update(DataroomDTO dto) {
-		int affected = 0;
-		try {
-			String query = "UPDATE dataroom SET"
-					+ " title=?, name=?, content=? " 
-					+ " , attachedfile=?, pass=? "
-					+ " WHERE idx=?";
-
-			psmt = con.prepareStatement(query);
-			psmt.setString(1, dto.getTitle());
-			psmt.setString(2, dto.getName());
-			psmt.setString(3, dto.getContent());
-			psmt.setString(4, dto.getAttachedfile());
-			psmt.setString(5, dto.getPass());
-			
-
-			//게시물수정을 위한 추가부분
-			psmt.setString(6, dto.getIdx());
-
-			affected = psmt.executeUpdate();
-		}
-		catch(Exception e) {
-			System.out.println("update중 예외발생");
-			e.printStackTrace();
-		}
-
-		return affected;
-	}
-
 	public int delete(String idx) {
 		int affected = 0;
 		try {
@@ -265,8 +236,50 @@ public class DataroomDAO {
 		}
 
 		return affected;
-	}
+	}	
 	
+	public int update(DataroomDTO dto) {
+		int affected = 0;
+		try {
+			String query = "UPDATE dataroom SET"
+					+ " title=?, name=?, content=? " 
+					+ " , attachedfile=?, pass=?  "
+					+ " WHERE idx=?";
+
+			psmt = con.prepareStatement(query);
+			psmt.setString(1, dto.getTitle());
+			psmt.setString(2, dto.getName());
+			psmt.setString(3, dto.getContent());
+			psmt.setString(4, dto.getAttachedfile());	
+			psmt.setString(5, dto.getPass());
+
+			//게시물수정을 위한 추가부분
+			psmt.setString(6, dto.getIdx());
+
+			affected = psmt.executeUpdate();
+		}
+		catch(Exception e) {
+			System.out.println("update중 예외발생");
+			e.printStackTrace();
+		}
+
+		return affected;
+	}
+
+	//파일 다운로드 수 증가
+	public void downCountPlus(String idx){
+		String sql = "UPDATE dataroom SET "
+			+ " downcount=downcount+1 "
+			+ " WHERE idx=? ";
+		try{
+			psmt = con.prepareStatement(sql);
+			psmt.setString(1, idx);
+			psmt.executeUpdate();
+		}
+		catch(Exception e){}
+	}	
+	
+		
 	public List<DataroomDTO> selectListPage(Map map)
 	{
 		List<DataroomDTO> bbs = new Vector<DataroomDTO>();
@@ -323,16 +336,5 @@ public class DataroomDAO {
 	}
 	
 	 
-	//파일 다운로드 수 증가
-	public void downCountPlus(String idx){
-		String sql = "UPDATE dataroom SET "
-			+ " downcount=downcount+1 "
-			+ " WHERE idx=? ";
-		try{
-			psmt = con.prepareStatement(sql);
-			psmt.setString(1, idx);
-			psmt.executeUpdate();
-		}
-		catch(Exception e){}
-	}	
+	
 }
