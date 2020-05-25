@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>JQ20EmptyRemove.html</title>
+<script src="../common/jquery/jquery-3.5.1.js"></script>
+<script>
+$(function(){
+	
+	$('button').click(function(){
+		if(this.id=="empty"){
+			/*
+			empty() : 선택된 요소의 content를 지움.
+				단순히 내용만 지우는 것으로 text('') 혹은
+				html('')와 동일하다. 
+			*/
+			$('div').empty();
+			//엘리먼트는 남아 있기때문에 아래 내용은 출력됨 
+			$('div').html('내용이 empty되었습니다.');
+		}
+		else{
+			/*
+			remove():선택된 요소 자체가 삭제됨
+			*/
+			$('div').remove();
+			$('div').html('내용이 remove되었습니다.');
+				}
+	});
+});
+</script>
+<style>
+	div{
+		border:2px green dotted;
+		height:50px;
+	}
+</style>
+</head>
+<body>
+	
+	<h2>empty() / remove() 메소드</h2>
+	
+	<button id="empty">Empty()호출하기</button>
+	<button id="remove">Remove()호출하기</button>	
+	
+	<div>div태그안의 텍스트</div>
+	
+</body>
+</html>
