@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>JQ03Bind.html</title>
+    <script src="../common/jquery/jquery-3.5.1.js"></script>
+    <script>
+         $(document).ready(function() {
+        /*
+        bind():이벤트를 여러개 연결할때 사용
+        unbind():이벤트 제거시 사용
+        ※주로 메서드 체인 형태로 사용해서 여러개의 이벤트를 연결할수 있다.
+        */
+       
+            $('#click_change')
+            .bind("mouseover", function(){
+                //JS이 함수를 이용 배경색 변경
+                document.getElementById("click_change")
+                    .style.backgroundColor="red";
+            })
+            .bind("mouseout", function(){
+                //jQuery get()메서드를 통해 요소를 선택하고 배경색 변경
+                $(this).get(0).style
+                    .backgroundColor="white";
+            })
+            .bind("click", function(){
+                //text() : JS의 innerText와 같은 역할의 메서드
+                alert($(this).text());
+            });
+
+        $('#btnClick').click(function(){
+            alert('버튼클릭됨')
+        });
+
+            $('#btnEventClear').bind('click',function(){
+            /*
+            해당코드가 실행되면 상위 코드의 이벤트가 반응이 안됨. 
+            */
+            $('#btnClick').unbind('click');
+            alert('#btnClick의 이벤트가 제거됨')
+         })    
+    });
+    </script>
+<style>
+	div{
+		width:500px; height:130px;
+		text-align:center; font-size:1.5em;
+		border:1px dotted black;
+	}
+	input{ width:200px; height:100px; margin-top:20px;}
+</style>    
+</head>
+    <body>
+        <h2>bind() 메소드</h2>	
+        <div id="click_change">
+            마우스를 over하면 red로 변하고 <br />
+            마우스를 out하면 white로 변하고 <br />
+            마우스를 click하면 여기 내용이
+            경고창(alert)으로 뜬데요~
+        </div>
+    
+        <h2>unbind() 메소드</h2>
+        
+        <input type="button" id="btnClick" value="난버튼" />
+        
+        <input type="button" id="btnEventClear" 
+            value="이벤트제거버튼" />
+    </body>
+</html>
