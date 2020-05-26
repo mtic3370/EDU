@@ -6,7 +6,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>JQ05AjaxSetup.jsp</title>
 <link rel="stylesheet" href="../common/bootstrap4.4.1/css/bootstrap.css" />
-<script src="../common/jquery/jquery-3.2.1.js"></script>
+<script src="../common/jquery/jquery-3.5.1.js"></script>
 <script>
 /*
  ajaxSetup(): 동일하게 반복되는 $.ajax()의 인자를 설정하여 
@@ -26,7 +26,7 @@ $(function(){
 	//위에서 미리 정의했음으로 콜백메소드만 정의함.
 	$('#btn').click(function(){
 		$.ajax({
-			succes : function(responseData) {
+			success : function(responseData) {
 				/*
 				콜백되는 JSON배열 데이터를 each()로 읽어서 배열의 갯수만큼 반복.
 				이대 각 반복된 JSON객체를 파싱하게 됨.

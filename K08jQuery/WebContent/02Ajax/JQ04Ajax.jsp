@@ -6,44 +6,53 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>JQ04Ajax.jsp</title>
 <link rel="stylesheet" href="../common/bootstrap4.4.1/css/bootstrap.css" />
-<script src="../common/jquery/jquery-3.2.1.js">
+<script src="../common/jquery/jquery-3.5.1.js"></script> 
+<script> 
+/*
+	$.ajax()
+		: jQuery에서 사용되는 AJAX관련 메소드로 load(), get(), post()
+		메소드의 특징 모두를 가지고 있다. 그러므로 가장 활용빈도가 높다.
+		별도의 인자가 존재하지 않고 JSON형태의 인자 하나만 사용한다. 
+	속성
+	url : 요청할 서버의 경로
+	type : 요청시 사용할 전송방식. get / post
+	dataType : 콜백 데이터의 형식. json / xml / script / text /html 등
+	success : 요청에 성공했을때 콜백메소드
+	error : 요청세 실패했을때 콜백메소드
+	contentType : 전송시 사용할 컨텐츠 타입(get과 post가 다름)
+	data : 서버로 전송할 파라미터. JSON형식
+*/
 
 $(function(){
+	
 	/*
-	해당메소드는 문서의 로드가 끝난직후 js파일의 내욜ㄹ을 읽어와서
-	현재 메이지에 노드됨. 
+	해당 메소드는 문서의 로드가 끝난직후 js파일의 내용을 읽어와서
+	현재 문서에 로드한다. 즉 $.load()메소드와 동일한 역할을 하고있다.
 	*/
 	$.ajax({
-		//요청할 서버의 페이지경로(form의 action과 동일)
 		url : './common/04JsData.js',
-		//서버로 전송할 전송방식(get 혹은 post)
 		type : 'get',		
-		//응답결과의 데이터형식(json, xml, html등)
 		dataType : "script",
-		//요청성공시 실행되는 callback메소드(무명함수)
+		//요청성공시의 콜백메소드는 무기명함수 형태로 정의됨
 		success : function(resData){
 			MyAlert("Hello", " AJAX");
 		},
-		//요청실패시 실행되는 callback메소드(외부정의)
+		//요청실패시 콜백메소드는 외부 JS함수로 정의됨
 		error : errFunc
 	});	
+	
 	
 	$('#ajaxBtn').click(function(){
 		$.ajax({
 			url : "./common/02PrintToday.jsp",
 			dataType : "html",
 			type : "get",
-			//서버전송시의 컨텐츠 타입
 			contentType : "text/html;charset:utf-8",
-			//서버로 전송되는 파라미터값(JSON형식으로 만들어야 함)
 			data : {
 				msg : $(this).text(),
 				varStr : "$.ajax()메소드 열라 짱 조아효"
 			},
-			//요청이 성공했을때 호출되는 콜백메소드(외부정의)
-			//함수의 이름만 명시하면 응답데이터까지 같이 전달됨.
-			//sucFunc(매개변수) 형태로 쓰지 않는다. 
-			success : sucFunc,/*sucFunc(data)형태로 사용하지 않음*/
+			success : sucFunc, /* sucFunc(data) 형태로 사용하지 않는다. */
 			error : errFunc
 		});
 	});	
@@ -51,24 +60,23 @@ $(function(){
 });
 
 /*
-콜백메서드를 외부함수 형태로 정의함. 해당함수를 호출시 함수명만으로 호출함.
-매개변수는 사용하지 않음.
- */
-//$.ajax()메소드 요청 실패시 호출할 callback메소드
-//(외부정의)
+	콜백메소드를 외부함수 형태로 정의함. 해당 함수를 호출시에는
+	함수명 만으로 호출한다. 매개변수는 사용하지 않는다. 
+		error : errFunc => O
+		error : errFunc(data) => X
+*/
 function errFunc(){
 	alert("에러발생. 디버깅하세욤.");
 }
 
 /*
-요청 성공시 호출할 메소드,외부함수로 정의되어 있고 함수명만으로 호출하더라도 
-콜백데이터는 파라미터로 받을수 있다. 
+	요청 성공시 호출할 콜백메소드. 외부함수로 정의되어 있고
+	함수명만으로 호출하더라도 콜백데이터는 파라미터로 받을수 있다.
 */
 function sucFunc(resData){
 	alert("$.ajax()메소드 요청성공");
 	$('#ajaxDisplay').html(resData);
 }
-
 </script>
 </head>
 <body>
