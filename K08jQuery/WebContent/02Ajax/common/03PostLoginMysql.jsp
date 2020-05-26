@@ -1,5 +1,5 @@
+<%@page import="controller.MysqlDAO"%>
 <%@page import="org.json.simple.JSONObject"%>
-<%@page import="controller.OracleDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%-- 03PostLoginOracle.jsp --%>
@@ -7,8 +7,8 @@
 String id = request.getParameter("user_id");
 String pw = request.getParameter("user_pw");
 
-OracleDAO dao = new OracleDAO();
-boolean isMember = dao.isMember(id, pw);
+MysqlDAO dao = new MysqlDAO();
+boolean isMember = dao.isMember(id, pw); 
 JSONObject json = new JSONObject();
 
 if(isMember==true){
