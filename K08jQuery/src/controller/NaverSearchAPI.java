@@ -18,23 +18,27 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 public class NaverSearchAPI extends HttpServlet {
-   
-   @Override
-   protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-      
-      String clientId = "uqAiEWJjGEVDU0Yrwkv2"; //애플리케이션 클라이언트 아이디값"
-        String clientSecret = "LKab9ra5wm"; //애플리케이션 클라이언트 시크릿값"
+	
+	@Override
+	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		
+		String clientId = "5xH68oEyTMVhBKZEBC3I"; //애플리케이션 클라이언트 아이디값"
+        String clientSecret = "YXV6TEwPDR"; //애플리케이션 클라이언트 시크릿값"
 
         String text = null;
+        int startNum = 1;
         try {
         	//jsp페이지에서 입력한 검색어를 받아와서 변수처리
         	String searchTxt = req.getParameter("keyword");
-            text = URLEncoder.encode("searchTxt", "UTF-8");
-        } catch (UnsupportedEncodingException e) {
+        	startNum = Integer.parseInt(req.getParameter("startNum"));
+        	
+            text = URLEncoder.encode(searchTxt, "UTF-8");
+        } 
+        catch (UnsupportedEncodingException e) {
             throw new RuntimeException("검색어 인코딩 실패",e);
         }
 
-        String apiURL = "https://openapi.naver.com/v1/search/blog?query=" + text;    // json 결과
+        String apiURL = "https://openapi.naver.com/v1/search/blog?query=" + text +"&display=20&start="+startNum;    // json 결과
         //String apiURL = "https://openapi.naver.com/v1/search/blog.xml?query="+ text; // xml 결과
 
         Map<String, String> requestHeaders = new HashMap<>();
@@ -42,7 +46,12 @@ public class NaverSearchAPI extends HttpServlet {
         requestHeaders.put("X-Naver-Client-Secret", clientSecret);
         String responseBody = get(apiURL,requestHeaders);
 
+        //네이버 검색 API실행시의 결과값 로그 출력
         System.out.println(responseBody);
+        
+        //네이버가 내려주는 결과 JSON 데이터를 서블릿에서 즉시 화면출력
+        resp.setContentType("text/html; charset=utf-8");
+        resp.getWriter().write(responseBody);
     }
 
     private static String get(String apiUrl, Map<String, String> requestHeaders){
